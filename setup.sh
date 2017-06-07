@@ -1,12 +1,14 @@
 #!/bin/bash
 
+[ ! -f env.sh ] && echo Please run this script under gpdb-studio directory. && exit 1
+
 ln -sf `pwd`/env.sh ~/env.sh
 source ~/env.sh
 
 gpstop -af
 killall -9 postgres
 rm -f /tmp/.s.PGSQL.*
-rm -rf ~/greenplum-db-data
+rm -rf ~/greenplum-db-data ~/gpAdminLogs
 
 mkdir -p ~/greenplum-db-data/master
 
