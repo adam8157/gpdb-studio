@@ -25,7 +25,7 @@ ARRAY_NAME="GPDB"
 SEG_PREFIX=gpseg
 PORT_BASE=40000
 
-declare -a DATA_DIRECTORY=(~/greenplum-db-data ~/greenplum-db-data)
+declare -a DATA_DIRECTORY=(~/greenplum-db-data ~/greenplum-db-data ~/greenplum-db-data)
 MASTER_HOSTNAME=`hostname`
 MASTER_DIRECTORY=~/greenplum-db-data/master
 MASTER_PORT=15432
