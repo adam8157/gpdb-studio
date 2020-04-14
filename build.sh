@@ -6,4 +6,4 @@ export CPPFLAGS="-I/usr/local/opt/zstd/include -I/usr/local/opt/libevent/include
 
 CFLAGS="-O0 -g3" ./configure --prefix=`echo ~`/greenplum-db-devel --with-python --with-gssapi --with-openssl --with-libxml --with-zstd --enable-depend --enable-cassert --enable-debug --enable-gpfdist --disable-gpcloud --disable-pxf --disable-orca
 
-make -j2
+bear gmake -j2
