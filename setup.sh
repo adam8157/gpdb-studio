@@ -10,10 +10,10 @@ killall -9 postgres
 rm -f /tmp/.s.PGSQL.*
 rm -rf ~/greenplum-db-data ~/gpAdminLogs
 
-mkdir -p ~/greenplum-db-data/master
+mkdir -p ~/greenplum-db-data
 
 export PGPORT=15432
-export MASTER_DATA_DIRECTORY=`echo ~`/greenplum-db-data/master/gpseg-1
+export MASTER_DATA_DIRECTORY=`echo ~`/greenplum-db-data/gpseg-1
 
 gpssh-exkeys -h `hostname`
 
@@ -27,7 +27,7 @@ PORT_BASE=40000
 
 declare -a DATA_DIRECTORY=(~/greenplum-db-data ~/greenplum-db-data ~/greenplum-db-data)
 MASTER_HOSTNAME=`hostname`
-MASTER_DIRECTORY=~/greenplum-db-data/master
+MASTER_DIRECTORY=~/greenplum-db-data
 MASTER_PORT=15432
 
 TRUSTED_SHELL=ssh
