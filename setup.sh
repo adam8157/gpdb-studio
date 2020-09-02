@@ -10,7 +10,8 @@ killall -9 postgres
 rm -f /tmp/.s.PGSQL.*
 rm -rf ~/greenplum-db-data ~/gpAdminLogs
 
-mkdir -p ~/greenplum-db-data
+mkdir -p ~/greenplum-db-data/primary
+mkdir -p ~/greenplum-db-data/mirror
 
 export PGPORT=15432
 export MASTER_DATA_DIRECTORY=`echo ~`/greenplum-db-data/gpseg-1
@@ -25,10 +26,15 @@ ARRAY_NAME="GPDB"
 SEG_PREFIX=gpseg
 PORT_BASE=40000
 
-declare -a DATA_DIRECTORY=(~/greenplum-db-data ~/greenplum-db-data ~/greenplum-db-data)
+declare -a DATA_DIRECTORY=(~/greenplum-db-data/primary ~/greenplum-db-data/primary ~/greenplum-db-data/primary)
 MASTER_HOSTNAME=`hostname`
 MASTER_DIRECTORY=~/greenplum-db-data
 MASTER_PORT=15432
+
+declare -a MIRROR_DATA_DIRECTORY=(~/greenplum-db-data/mirror ~/greenplum-db-data/mirror ~/greenplum-db-data/mirror)
+MIRROR_PORT_BASE=50000
+REPLICATION_PORT_BASE=41000
+MIRROR_REPLICATION_PORT_BASE=51000
 
 TRUSTED_SHELL=ssh
 CHECK_POINT_SEGMENTS=8
