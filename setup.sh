@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
 [ ! -f env_gpdb.sh ] && echo Please run this script under gpdb-studio directory. && exit 1
 
 ln -sf `pwd`/env_gpdb.sh ~/env_gpdb.sh
