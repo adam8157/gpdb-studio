@@ -1,0 +1,3 @@
+[submodule "gdbpg"]
+	path = gdbpg
+	url = https://github.com/tvesely/gdbpg.git
