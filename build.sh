@@ -6,7 +6,13 @@ export CPPFLAGS="-I/usr/local/opt/zstd/include -I/usr/local/opt/libevent/include
 CFLAGS="-O0 -g3" ./configure --prefix=`echo ~`/greenplum-db-devel --disable-gpcloud --disable-ic-proxy --disable-orca --disable-pxf --enable-cassert --enable-debug --enable-depend --enable-gpfdist --enable-tap-tests --with-gssapi --with-libxml --with-openssl --with-python --with-zstd
 
 if command -v gmake >/dev/null 2>&1; then
-	bear -- gmake -j2
+	MAKE=gmake
 else
-	bear -- make -j2
+	MAKE=make
+fi
+
+if command -v bear >/dev/null 2>&1; then
+	bear -- $MAKE -j2
+else
+	$MAKE -j2
 fi
