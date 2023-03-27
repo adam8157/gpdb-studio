@@ -5,7 +5,45 @@ if command -v brew >/dev/null 2>&1; then
 	export CPPFLAGS="-I`brew --prefix`/opt/zstd/include -I`brew --prefix`/opt/libevent/include -I`brew --prefix`/opt/openssl/include -I`brew --prefix`/opt/libxml2/include"
 fi
 
-CFLAGS="-O0 -g3" ./configure --prefix=`echo ~`/greenplum-db-devel --disable-gpcloud --disable-ic-proxy --disable-orca --disable-pxf --enable-cassert --enable-debug --enable-depend --enable-gpfdist --enable-tap-tests --with-gssapi --with-libxml --with-openssl --with-python --with-zstd
+OPTION_ORCA="--disable-orca"
+OPTION_TAP="--disable-tap-tests"
+
+while [[ $# -gt 0 ]]
+do
+	case "$1" in
+		--orca)
+			OPTION_ORCA="--enable-orca"
+			shift;;
+		--tap)
+			OPTION_TAP="--enable-tap-tests"
+			shift;;
+		--)
+			shift
+			break;;
+		*)
+			echo "Wrong options" >&2
+			exit 1;;
+	esac
+done
+
+CFLAGS="-O0 -g3" ./configure --prefix=`echo ~`/greenplum-db-devel \
+	--disable-gpcloud \
+	--disable-ic-proxy \
+	--disable-pxf \
+	--enable-cassert \
+	--enable-debug \
+	--enable-depend \
+	--enable-gpfdist \
+	$OPTION_ORCA \
+	$OPTION_TAP \
+	--with-gssapi \
+	--with-libxml \
+	--with-openssl \
+	--with-python \
+	--with-perl \
+	--with-zstd \
+	--with-includes=/usr/local/include \
+	--with-libraries=/usr/local/lib
 
 if command -v gmake >/dev/null 2>&1; then
 	MAKE=gmake
