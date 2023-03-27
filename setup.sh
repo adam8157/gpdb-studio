@@ -44,4 +44,4 @@ ENCODING=UNICODE
 MACHINE_LIST_FILE=hostfile
 EOF
 
-gpinitsystem -c gpinitsystem_config -h hostfile -a
+gpinitsystem -c gpinitsystem_config -h hostfile -s `hostname` -P 15433 -S ~/greenplum-db-data/standby -a
