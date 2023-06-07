@@ -5,12 +5,16 @@ if command -v brew >/dev/null 2>&1; then
 	export CPPFLAGS="-I`brew --prefix`/opt/zstd/include -I`brew --prefix`/opt/libevent/include -I`brew --prefix`/opt/openssl/include -I`brew --prefix`/opt/libxml2/include"
 fi
 
+OPTION_ICPROXY="--disable-ic-proxy"
 OPTION_ORCA="--disable-orca"
 OPTION_TAP="--disable-tap-tests"
 
 while [[ $# -gt 0 ]]
 do
 	case "$1" in
+		--icproxy)
+			OPTION_ICPROXY="--enable-ic-proxy"
+			shift;;
 		--orca)
 			OPTION_ORCA="--enable-orca"
 			shift;;
@@ -28,12 +32,12 @@ done
 
 CFLAGS="-O0 -g3" ./configure --prefix=`echo ~`/greenplum-db-devel \
 	--disable-gpcloud \
-	--disable-ic-proxy \
 	--disable-pxf \
 	--enable-cassert \
 	--enable-debug \
 	--enable-depend \
 	--enable-gpfdist \
+	$OPTION_ICPROXY \
 	$OPTION_ORCA \
 	$OPTION_TAP \
 	--with-gssapi \
