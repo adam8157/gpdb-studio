@@ -25,7 +25,7 @@ do
 			shift
 			break;;
 		*)
-			echo "Wrong options" >&2
+			echo "Only --icproxy, --orca and --tap are valid options" >&2
 			exit 1;;
 	esac
 done
