@@ -30,7 +30,7 @@ do
 	esac
 done
 
-CFLAGS="-O0 -g3" ./configure --prefix=`echo ~`/greenplum-db-devel \
+CFLAGS="-O0 -g3 -fno-omit-frame-pointer" ./configure --prefix=`echo ~`/greenplum-db-devel \
 	--disable-gpcloud \
 	--disable-pxf \
 	--enable-cassert \
