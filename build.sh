@@ -1,8 +1,8 @@
 # extra environment variables for macOS
 if command -v brew >/dev/null 2>&1; then
 	export PATH="`brew --prefix`/opt/apr/bin:`brew --prefix`/opt/apr-util/bin:`brew --prefix`/opt/libxml2/bin:$PATH"
-	export LDFLAGS="-L`brew --prefix`/opt/zstd/lib -L`brew --prefix`/opt/libevent/lib -L`brew --prefix`/opt/openssl/lib -L`brew --prefix`/opt/libxml2/lib -L`brew --prefix`/opt/libyaml/lib"
-	export CPPFLAGS="-I`brew --prefix`/opt/zstd/include -I`brew --prefix`/opt/libevent/include -I`brew --prefix`/opt/openssl/include -I`brew --prefix`/opt/libxml2/include -I`brew --prefix`/opt/libyaml/include"
+	export LDFLAGS="-L`brew --prefix`/opt/zstd/lib -L`brew --prefix`/opt/libevent/lib -L`brew --prefix`/opt/openssl/lib -L`brew --prefix`/opt/libxml2/lib -L`brew --prefix`/opt/libyaml/lib -L`brew --prefix`/opt/xerces-c/lib"
+	export CPPFLAGS="-I`brew --prefix`/opt/zstd/include -I`brew --prefix`/opt/libevent/include -I`brew --prefix`/opt/openssl/include -I`brew --prefix`/opt/libxml2/include -I`brew --prefix`/opt/libyaml/include -I`brew --prefix`/opt/xerces-c/include"
 fi
 
 OPTION_ICPROXY="--disable-ic-proxy"
